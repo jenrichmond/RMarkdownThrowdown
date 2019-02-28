@@ -1,0 +1,51 @@
+---
+title: "table make"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Table Making
+
+There are a few packages which can use to make nice tables in RMarkdown
+- knitr
+- stargazer
+- pander
+- tables
+- ascii
+
+I'll try get through some of them with some examples!
+
+## Using Knitr Package
+The kable function in the knitr lets you create basic tables, with a few different formatting options.
+
+```{r}
+#install.packages("knitr")
+library(knitr)
+
+kable(head(iris), caption="A simple table about flowers")
+kable(head(iris), format= 'html', caption="A simple table about flowers")
+kable(head(iris), format= 'latex', caption="A simple table about flowers")  #Latex isn't working on my computer
+```
+##Formatting options
+Kableextra has more options
+
+```{r}
+#install.packages("kableExtra")
+
+```
+
+```{r}
+
+library(kableExtra)
+library(dplyr)
+
+dt <- head(iris)
+
+kable(dt) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+And this is all I get get in a Markdown before we ran out of time! Check out [this link](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
